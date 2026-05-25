@@ -1,30 +1,69 @@
-// ስለ ቦታዎቹ ታሪክ፣ ፎቶዎች እና መስተጋብሮች (Likes/Ratings) የያዘ ዳታ
+// ስለ 4ቱም ቦታዎች ሙሉ መረጃ የያዘ ዳታ
 const destinationData = {
     mountains: {
         title: "The Majestic Simien Mountains National Park",
         img1: "https://images.unsplash.com/photo-1606318313647-137d1f3b4d3c?w=800", 
         img2: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=800", 
-        description: `The Simien Mountains National Park, located in the North Gondar Zone of the Amhara Region, is one of the most breathtaking natural wonders in Africa. Established in 1969, it was one of the first sites to be recognized as a UNESCO World Heritage Site in 1978 due to its global biological importance and staggering natural beauty.`,
+        description: `The Simien Mountains National Park, located in northern Ethiopia, is a spectacular landscape, where massive erosion over the years has created jagged mountain peaks, deep valleys and sharp precipices dropping some 1,500 meters. Established in 1969, it is home to Ras Dashen, the highest peak in Ethiopia (4,550m). It protects rare and endemic species like the Walia Ibex and Gelada Baboon.`,
         highlights: [
-            "Location: North Gondar Zone, Amhara Region, Ethiopia.",
-            "Key Peaks: Ras Dashen (4,550m) – The highest point in the country.",
-            "UNESCO Status: Registered in 1978 as a World Natural Heritage."
+            "Location: North Gondar Zone, Amhara Region.",
+            "Key Peaks: Ras Dashen (4,550m).",
+            "UNESCO Status: Inscribed in 1978 as a World Natural Heritage."
         ]
     },
     lalibela: {
         title: "The Holy Rock-Hewn Churches of Lalibela",
-        img1: "https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?w=800", 
-        img2: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800", 
-        description: `Lalibela, formerly known as Roha, is a historic town in the Lasta district of the Amhara Region. It is world-renowned for its eleven monolithic and semi-monolithic churches, entirely carved out of living rock. These architectural marvels date back to the late 12th and early 13th centuries, during the reign of King Gebre Meskel Lalibela of the Zagwe Dynasty.`,
+        img1: "https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?w=800", // እውነተኛ የላሊበላ ፎቶ 1
+        img2: "https://images.unsplash.com/photo-1599931818731-97b40974cc9e?w=800", // እውነተኛ የላሊበላ ፎቶ 2
+        description: `Lalibela is a historic town famous for its eleven monolithic and semi-monolithic churches, entirely carved out of solid living rock. Dating back to the late 12th and early 13th centuries during the reign of King Gebre Meskel Lalibela, these masterpieces represent a 'New Jerusalem'. The churches were meticulously hand-carved from the top down into volcanic tuff rock without using mortar or bricks.`,
         highlights: [
-            "Location: Lasta District, Wollo, Amhara Region, Ethiopia.",
-            "Founder: King Gebre Meskel Lalibela (Zagwe Dynasty) in the 12th/13th century.",
-            "UNESCO Status: Inscribed as a World Cultural Heritage Site in 1978."
+            "Founder: King Lalibela (Zagwe Dynasty) in the 12th/13th century.",
+            "UNESCO Status: Inscribed as a World Cultural Heritage Site in 1978.",
+            "Key Monoliths: Biete Giyorgis (St. George) shaped like a perfect cross."
+        ]
+    },
+    axum: {
+        title: "The Ancient Obelisk and Empire of Axum",
+        img1: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800", // አክሱም ሐውልት 1
+        img2: "https://images.unsplash.com/photo-1627563721343-4e4881fa6d64?w=800", // አክሱም ሐውልት 2
+        description: `Axum was the center of the ancient Aksumite Empire, which was one of the four major global powers of its time alongside Rome, Persia, and China. The ruins of the site include monumental stelae (obelisks), royal tombs, and ancient palaces. The largest standing obelisk rises to a height of 23 meters and represents a masterpiece of engineering, carved from a single piece of granite. Axum is also home to the Church of Our Lady Mary of Zion, where tradition holds the Ark of the Covenant is kept.`,
+        highlights: [
+            "Location: Tigray Region, Northern Ethiopia.",
+            "Historical Era: Peak influence from the 1st to the 7th centuries AD.",
+            "UNESCO Status: Inscribed as a World Cultural Heritage Site in 1980.",
+            "Significance: Spiritual center of Ethiopian Orthodox Christianity."
+        ]
+    },
+    gondar: {
+        title: "Fasil Ghebbi: The Royal Castles of Gondar",
+        img1: "https://images.unsplash.com/photo-1607584822941-86f1e8e50587?w=800", // ጎንደር 1
+        img2: "https://images.unsplash.com/photo-1569930784237-ea65a2f48a66?w=800", // ጎንደር 2
+        description: `Fasil Ghebbi is a spectacular fortress-city located in Gondar, which served as the home of Ethiopian emperors during the 17th and 18th centuries. Founded by Emperor Fasilides in 1636, the site features unique architecture that blends European Baroque style with Hindu, Arab, and traditional Ethiopian Aksumite influences. The complex includes palaces, a massive banquet hall, royal baths, and historic churches decorated with beautiful angel-faced frescoes.`,
+        highlights: [
+            "Founder: Emperor Fasilides in 1636 AD.",
+            "Location: Gondar, Amhara Region.",
+            "UNESCO Status: Inscribed as a World Cultural Heritage Site in 1979.",
+            "Architecture: Known as the 'Camelot of Africa' due to its medieval castle layout."
         ]
     }
 };
 
-let currentDestination = ""; // አሁን የተከፈተውን ቦታ ለመለየት
+let currentDestination = ""; 
+
+// የፍለጋ ፈንክሽን (🌟 አዲስ 🌟)
+function searchDestinations() {
+    let input = document.getElementById('searchBar').value.toLowerCase();
+    let cards = document.getElementsByClassName('tour-card');
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].getAttribute('data-name');
+        if (name.includes(input)) {
+            cards[i].style.display = "flex"; // ካርዱን አሳይ
+        } else {
+            cards[i].style.display = "none"; // ካርዱን ደብቅ
+        }
+    }
+}
 
 // ሳጥኑን ለመክፈት
 function openModal(destinationKey) {
@@ -32,7 +71,6 @@ function openModal(destinationKey) {
     const modal = document.getElementById('infoModal');
     const data = destinationData[destinationKey];
 
-    // ይዘቶችን መሙላት
     document.getElementById('modalTitle').innerText = data.title;
     document.getElementById('modalImg1').src = data.img1;
     document.getElementById('modalImg2').src = data.img2;
@@ -46,7 +84,6 @@ function openModal(destinationKey) {
         highlightsList.appendChild(li);
     });
 
-    // 🌟 የ Like እና Rating ሁኔታን ከ LocalStorage ላይ ጭኖ ማሳየት 🌟
     updateLikeUI();
     updateRatingUI();
 
@@ -54,18 +91,14 @@ function openModal(destinationKey) {
     document.body.style.overflow = "hidden"; 
 }
 
-// 🔴 የ LIKE ተግባር (Toggle Like)
+// Like ተግባር
 function toggleLike() {
     let likedPlaces = JSON.parse(localStorage.getItem('likedPlaces')) || {};
-    
     if (likedPlaces[currentDestination]) {
-        // በፊት Like ተደርጎ ከሆነ አሁን ማጥፋት (Unlike)
         delete likedPlaces[currentDestination];
     } else {
-        // ካልተደረገ Like ማድረግ
         likedPlaces[currentDestination] = true;
     }
-    
     localStorage.setItem('likedPlaces', JSON.stringify(likedPlaces));
     updateLikeUI();
 }
@@ -75,42 +108,37 @@ function updateLikeUI() {
     const likeBtn = document.getElementById('likeBtn');
     const likeCountSpan = document.getElementById('likeCount');
 
-    // ለሙከራ ያህል መሠረታዊ የላይክ ቁጥር (12) ላይ እኛ ያደረግነውን መደመር
-    let baseLikes = currentDestination === 'lalibela' ? 150 : 98; 
+    let baseLikes = { mountains: 98, lalibela: 150, axum: 120, gondar: 115 };
+    let currentLikes = baseLikes[currentDestination] || 0;
 
     if (likedPlaces[currentDestination]) {
         likeBtn.classList.add('liked');
         likeBtn.innerText = "❤️ Liked";
-        likeCountSpan.innerText = baseLikes + 1;
+        likeCountSpan.innerText = currentLikes + 1;
     } else {
         likeBtn.classList.remove('liked');
         likeBtn.innerText = "❤️ Like";
-        likeCountSpan.innerText = baseLikes;
+        likeCountSpan.innerText = currentLikes;
     }
 }
 
-// 🔴 የ RATING ተግባር (Star Rating)
+// Rating ተግባር
 function ratePlace(starsCount) {
     let ratings = JSON.parse(localStorage.getItem('placeRatings')) || {};
-    ratings[currentDestination] = starsCount; // ደረጃውን መመዝገብ
+    ratings[currentDestination] = starsCount;
     localStorage.setItem('placeRatings', JSON.stringify(ratings));
-    
     updateRatingUI();
 }
 
 function updateRatingUI() {
     let ratings = JSON.parse(localStorage.getItem('placeRatings')) || {};
     let savedRating = ratings[currentDestination] || 0;
-    
     const stars = document.querySelectorAll('.star');
     const status = document.getElementById('ratingStatus');
 
-    // ሁሉንም ከዋክብት መጀመሪያ ማጽዳት (Deactivate)
     stars.forEach(star => star.classList.remove('active'));
 
-    // የተመረጠውን ያህል ኮከብ ማብራት (በ CSS Flex-reverse ምክንያት ከበስተጀርባ ነው የምንቆጥረው)
     if (savedRating > 0) {
-        // 5 ኮከብ ስላለ index ማስተካከል
         for (let i = 0; i < savedRating; i++) {
             stars[5 - 1 - i].classList.add('active');
         }
