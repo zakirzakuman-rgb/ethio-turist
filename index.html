@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethiopian Tourist Destinations</title>
+    
     <meta name="google-site-verification" content="MwjMR9FcEPS2BiS-YdYJab5YHVa0MKoBzRsRplKT9M0" />
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,11 +15,16 @@
         <div class="header-content">
             <h1>Visit Beautiful Ethiopia</h1>
             <p>The history of our ancestors and the gifts of nature</p>
+            
+            <div class="search-container">
+                <input type="text" id="searchBar" onkeyup="searchDestinations()" placeholder="Search destinations (e.g. Lalibela, Axum)...">
+            </div>
         </div>
     </header>
 
-    <main class="gallery-container">
-        <div class="tour-card">
+    <main class="gallery-container" id="galleryContainer">
+
+        <div class="tour-card" data-name="northern mountains simien">
             <div class="image-box">
                 <img src="https://images.unsplash.com/photo-1626243884824-747209794d0c?w=500" alt="Northern Mountains">
             </div>
@@ -28,7 +35,7 @@
             </div>
         </div>
 
-        <div class="tour-card">
+        <div class="tour-card" data-name="lalibela rock churches">
             <div class="image-box">
                 <img src="https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?w=500" alt="Lalibela Rock-Hewn Churches">
             </div>
@@ -38,6 +45,29 @@
                 <button onclick="openModal('lalibela')">See more</button>
             </div>
         </div>
+
+        <div class="tour-card" data-name="axum obelisk stelae">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500" alt="Obelisk of Axum">
+            </div>
+            <div class="card-content">
+                <h3>The Obelisk of Axum</h3>
+                <p>An ancient monolithic obelisk dating back 1,700 years, standing as a symbol of pre-Christian civilization.</p>
+                <button onclick="openModal('axum')">See more</button>
+            </div>
+        </div>
+
+        <div class="tour-card" data-name="gondar fasil ghebbi castle">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1607584822941-86f1e8e50587?w=500" alt="Fasil Ghebbi Gondar">
+            </div>
+            <div class="card-content">
+                <h3>Fasil Ghebbi (Gondar Castles)</h3>
+                <p>A magnificent fortress-city that served as the home of Ethiopian emperors in the 17th and 18th centuries.</p>
+                <button onclick="openModal('gondar')">See more</button>
+            </div>
+        </div>
+
     </main>
 
     <div id="infoModal" class="modal">
