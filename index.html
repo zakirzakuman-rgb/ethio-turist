@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethiopian Tourist Destinations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Visit Beautiful Ethiopia</h1>
+            <p>The history of our ancestors and the gifts of nature</p>
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <div class="tour-card">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1626243884824-747209794d0c?w=500" alt="Northern Mountains">
+            </div>
+            <div class="card-content">
+                <h3>Northern Mountains National Park</h3>
+                <p>A place of amazing natural scenery and rare animals found only in Ethiopia.</p>
+                <button onclick="openModal('mountains')">See more</button>
+            </div>
+        </div>
+
+        <div class="tour-card">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?w=500" alt="Lalibela Rock-Hewn Churches">
+            </div>
+            <div class="card-content">
+                <h3>The Rock-Hewn Churches of Lalibela</h3>
+                <p>Wonders of the world carved from a single solid block of stone in the 12th century.</p>
+                <button onclick="openModal('lalibela')">See more</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Destination Title</h2>
+            
+            <div class="modal-images">
+                <img id="modalImg1" src="" alt="Detail 1">
+                <img id="modalImg2" src="" alt="Detail 2">
+            </div>
+
+            <div class="modal-text">
+                <p id="modalDescription"></p>
+                <h3>Key Highlights:</h3>
+                <ul id="modalHighlights"></ul>
+                
+                <hr class="modal-divider">
+
+                <div class="interaction-section">
+                    <div class="like-container">
+                        <button id="likeBtn" onclick="toggleLike()">❤️ Like</button>
+                        <span id="likeCount">0</span> Likes
+                    </div>
+                    
+                    <div class="rating-container">
+                        <span>Rate this place: </span>
+                        <div class="stars">
+                            <span class="star" onclick="ratePlace(1)">★</span>
+                            <span class="star" onclick="ratePlace(2)">★</span>
+                            <span class="star" onclick="ratePlace(3)">★</span>
+                            <span class="star" onclick="ratePlace(4)">★</span>
+                            <span class="star" onclick="ratePlace(5)">★</span>
+                        </div>
+                        <span id="ratingStatus" class="rating-status"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created with 💻 by Zakir Ali</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
