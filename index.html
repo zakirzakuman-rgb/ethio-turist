@@ -1,117 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="am">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethiopian Tourist Destinations</title>
-    
-    <meta name="google-site-verification" content="MwjMR9FcEPS2BiS-YdYJab5YHVa0MKoBzRsRplKT9M0" />
-
+    <title>Visit Beautiful Ethiopia</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
+    <header class="hero-section">
+        <div class="overlay"></div>
+        <div class="hero-content">
             <h1>Visit Beautiful Ethiopia</h1>
             <p>The history of our ancestors and the gifts of nature</p>
             
             <div class="search-container">
-                <input type="text" id="searchBar" onkeyup="searchDestinations()" placeholder="Search destinations (e.g. Lalibela, Axum)...">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search destinations (e.g. Lalibela, Axum, Simien)..." onkeyup="searchDestinations()">
             </div>
         </div>
     </header>
 
-    <main class="gallery-container" id="galleryContainer">
-
-        <div class="tour-card" data-name="northern mountains simien">
-            <div class="image-box">
-                <img src="https://images.unsplash.com/photo-1626243884824-747209794d0c?w=500" alt="Northern Mountains">
-            </div>
-            <div class="card-content">
-                <h3>Northern Mountains National Park</h3>
-                <p>A place of amazing natural scenery and rare animals found only in Ethiopia.</p>
-                <button onclick="openModal('mountains')">See more</button>
-            </div>
-        </div>
-
-        <div class="tour-card" data-name="lalibela rock churches">
-            <div class="image-box">
-                <img src="https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?w=500" alt="Lalibela Rock-Hewn Churches">
-            </div>
-            <div class="card-content">
-                <h3>The Rock-Hewn Churches of Lalibela</h3>
-                <p>Wonders of the world carved from a single solid block of stone in the 12th century.</p>
-                <button onclick="openModal('lalibela')">See more</button>
-            </div>
-        </div>
-
-        <div class="tour-card" data-name="axum obelisk stelae">
-            <div class="image-box">
-                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500" alt="Obelisk of Axum">
-            </div>
-            <div class="card-content">
-                <h3>The Obelisk of Axum</h3>
-                <p>An ancient monolithic obelisk dating back 1,700 years, standing as a symbol of pre-Christian civilization.</p>
-                <button onclick="openModal('axum')">See more</button>
-            </div>
-        </div>
-
-        <div class="tour-card" data-name="gondar fasil ghebbi castle">
-            <div class="image-box">
-                <img src="https://images.unsplash.com/photo-1607584822941-86f1e8e50587?w=500" alt="Fasil Ghebbi Gondar">
-            </div>
-            <div class="card-content">
-                <h3>Fasil Ghebbi (Gondar Castles)</h3>
-                <p>A magnificent fortress-city that served as the home of Ethiopian emperors in the 17th and 18th centuries.</p>
-                <button onclick="openModal('gondar')">See more</button>
-            </div>
-        </div>
-
-    </main>
-
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle">Destination Title</h2>
+    <main class="container">
+        <h2 class="section-title">Top Destinations</h2>
+        
+        <div class="destinations-grid" id="destinationsGrid">
             
-            <div class="modal-images">
-                <img id="modalImg1" src="" alt="Detail 1">
-                <img id="modalImg2" src="" alt="Detail 2">
-            </div>
-
-            <div class="modal-text">
-                <p id="modalDescription"></p>
-                <h3>Key Highlights:</h3>
-                <ul id="modalHighlights"></ul>
-                
-                <hr class="modal-divider">
-
-                <div class="interaction-section">
-                    <div class="like-container">
-                        <button id="likeBtn" onclick="toggleLike()">❤️ Like</button>
-                        <span id="likeCount">0</span> Likes
-                    </div>
-                    
-                    <div class="rating-container">
-                        <span>Rate this place: </span>
-                        <div class="stars">
-                            <span class="star" onclick="ratePlace(1)">★</span>
-                            <span class="star" onclick="ratePlace(2)">★</span>
-                            <span class="star" onclick="ratePlace(3)">★</span>
-                            <span class="star" onclick="ratePlace(4)">★</span>
-                            <span class="star" onclick="ratePlace(5)">★</span>
-                        </div>
-                        <span id="ratingStatus" class="rating-status"></span>
-                    </div>
+            <div class="card" data-name="northern mountains simien scenery">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=800&q=80" alt="Northern Mountains">
+                </div>
+                <div class="card-body">
+                    <h3>Northern Mountains National Park</h3>
+                    <p>A place of amazing natural scenery and rare animals found only in Ethiopia.</p>
+                    <a href="#" class="btn">Explore More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <footer>
-        <p>Created with 💻 by Zakir Ali</p>
-    </footer>
+            <div class="card" data-name="rock-hewn churches lalibela stone">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80" alt="Lalibela">
+                </div>
+                <div class="card-body">
+                    <h3>The Rock-Hewn Churches of Lalibela</h3>
+                    <p>Wonders of the world carved from a single solid block of stone in the 12th century.</p>
+                    <a href="#" class="btn">Explore More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="card" data-name="obelisk of axum monument history">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?auto=format&fit=crop&w=800&q=80" alt="Axum">
+                </div>
+                <div class="card-body">
+                    <h3>The Obelisk of Axum</h3>
+                    <p>An ancient monolithic obelisk dating back 1,700 years, standing as a symbol of pre-Christian civilization.</p>
+                    <a href="#" class="btn">Explore More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
